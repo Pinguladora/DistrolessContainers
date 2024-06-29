@@ -1,0 +1,94 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - apk-tools
+    - binutils
+    - build-base
+    - busybox
+    - ca-certificates-bundle
+    - gcc
+    - gdbm
+    - git
+    - glibc
+    - glibc-dev
+    - glibc-locale-posix
+    - gmp
+    - isl
+    - ld-linux
+    - libatomic
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libbz2-1
+    - libcrypt1
+    - libcrypto3
+    - libcurl-openssl4
+    - libexpat1
+    - libffi
+    - libgcc
+    - libgo
+    - libgomp
+    - libidn2
+    - libnghttp2-14
+    - libpcre2-8-0
+    - libpsl
+    - libssl3
+    - libstdc++
+    - libstdc++-dev
+    - libunistring
+    - libxcrypt
+    - libxcrypt-dev
+    - linux-headers
+    - make
+    - mpc
+    - mpdecimal
+    - mpfr
+    - ncurses
+    - ncurses-terminfo-base
+    - nss-db
+    - nss-hesiod
+    - pkgconf
+    - posix-cc-wrappers
+    - py3.11-flit-core
+    - py3.11-pip
+    - py3.11-pip-base
+    - py3.11-setuptools
+    - python-3.11
+    - python-3.11-base
+    - python-3.11-base-dev
+    - python-3.11-dev
+    - readline
+    - sqlite-libs
+    - wget
+    - wolfi-baselayout
+    - xz
+    - zlib
+    - zsh
+    - dropbear
+    
+
+entrypoint:
+  type: service-bundle
+  services:
+    python: /usr/bin/python
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+
+archs:
+  - x86_64
+  - aarch64
+
+

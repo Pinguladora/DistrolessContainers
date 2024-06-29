@@ -1,0 +1,7 @@
+{
+    "name": "Python 3.11 Dev | Wolfi",
+    "image": "docker.io/library/python:3.11-dev-amd64",
+	// Set to root, so apk and other system libraries can be used
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}

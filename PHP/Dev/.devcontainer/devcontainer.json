@@ -1,0 +1,7 @@
+{
+    "name": "PHP 8.2 FPM | Wolfi",
+    "image": "docker.io/library/php:8.2-fpm-dev-amd64",
+	// Set to root, so composer and other system libraries can be used
+	"remoteUser": "root",
+    "containerUser": "php"
+}

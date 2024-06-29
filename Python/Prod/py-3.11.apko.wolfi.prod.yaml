@@ -1,0 +1,51 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - ca-certificates-bundle
+    - gdbm
+    - glibc
+    - glibc-locale-posix
+    - ld-linux
+    - libbz2-1
+    - libcrypt1
+    - libcrypto3
+    - libexpat1
+    - libffi
+    - libgcc
+    - libssl3
+    - libstdc++
+    - libxcrypt
+    - mpdecimal
+    - ncurses
+    - ncurses-terminfo-base
+    - python-3.11
+    - python-3.11-base
+    - readline
+    - sqlite-libs
+    - wolfi-baselayout
+    - xz
+    - zlib
+
+entrypoint:
+  type: service-bundle
+  services:
+    python: /usr/bin/python
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+  run-as: nonroot
+
+environment:
+  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+
+archs:
+  - x86_64
+  - aarch64
