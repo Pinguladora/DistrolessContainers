@@ -9,9 +9,12 @@ contents:
     - build-base
     - busybox
     - ca-certificates-bundle
+    - dropbear
     - gcc
     - gdbm
     - git
+    - gitsign
+    - gitsign-credential-cache
     - glibc
     - glibc-dev
     - glibc-locale-posix
@@ -52,26 +55,28 @@ contents:
     - pkgconf
     - posix-cc-wrappers
     - py3.10-flit-core
-    - py3.10-pip
-    - py3.10-pip-base
+    # - py3.10-pip
+    # - py3.10-pip-base
     - py3.10-setuptools
     - python-3.10
     - python-3.10-base
     - python-3.10-base-dev
     - python-3.10-dev
     - readline
+    - ruff
     - sqlite-libs
+    - uv
     - wget
     - wolfi-baselayout
     - xz
     - zlib
     - zsh
-    - dropbear
 
 entrypoint:
-  type: service-bundle
   services:
     python: /usr/bin/python
+
+work-dir: /app
 
 accounts:
   groups:

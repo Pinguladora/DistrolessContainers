@@ -60,7 +60,7 @@ contents:
 
 entrypoint:
   services:
-    python: /bin/php
+    php: /bin/php
 
 work-dir: /app
 

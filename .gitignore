@@ -2,3 +2,5 @@
 *.tar
 # SBOM related files
 sbom*
+# Alpine based
+*.apko.alpine.*
