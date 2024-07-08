@@ -5,87 +5,74 @@ contents:
     - https://packages.wolfi.dev/os
   packages:
     - apk-tools
+    - binutils
+    - binutils-gold
+    - build-base
     - busybox
-    - ca-certificates
     - ca-certificates-bundle
-    - composer
-    - curl
     - dropbear
+    - gcc
     - git
     - gitsign
     - gitsign-credential-cache
     - glibc
+    - glibc-dev
     - glibc-locale-posix
+    - gmp
+    - go-1.22
+    - isl
     - ld-linux
+    - libatomic
     - libbrotlicommon1
     - libbrotlidec1
     - libcrypt1
     - libcrypto3
     - libcurl-openssl4
+    - libedit
     - libexpat1
+    - libgcc
+    - libgo
+    - libgomp
     - libidn2
     - libnghttp2-14
     - libpcre2-8-0
     - libpsl
-    - libsodium
     - libssl3
+    - libstdc++
+    - libstdc++-dev
     - libunistring
     - libxcrypt
-    - libxml2
+    - libxcrypt-dev
+    - linux-headers
+    - make
+    - mpc
+    - mpfr
     - ncurses
     - ncurses-terminfo-base
-    - oniguruma
-    - php-8.3
-    - php-8.3-config
-    - php-8.3-curl
-    - php-8.3-curl-config
-    - php-8.3-iconv
-    - php-8.3-iconv-config
-    - php-8.3-mbstring
-    - php-8.3-mbstring-config
-    - php-8.3-mysqlnd
-    - php-8.3-mysqlnd-config
-    - php-8.3-openssl
-    - php-8.3-openssl-config
-    - php-8.3-pdo
-    - php-8.3-pdo-config
-    - php-8.3-pdo_mysql
-    - php-8.3-pdo_mysql-config
-    - php-8.3-pdo_sqlite
-    - php-8.3-pdo_sqlite-config
-    - php-8.3-phar
-    - php-8.3-phar-config
-    - php-8.3-sodium
-    - php-8.3-sodium-config
-    - readline
-    - sqlite-libs
+    - nss-db
+    - nss-hesiod
+    - pkgconf
+    - posix-cc-wrappers
     - wget
     - wolfi-baselayout
-    - xz
     - zlib
     - zsh
-    # FPM stuff
-    - execline
-    - php-8.3-fpm
-    - php-8.3-fpm-config
-    - s6
-    - skalibs
-    
+
 entrypoint:
   services:
-    php: /bin/php
+    go: /usr/bin/go
 
 work-dir: /app
 
 accounts:
   groups:
-    - groupname: php
+    - groupname: nonroot
       gid: 65532
   users:
-    - username: php
+    - username: nonroot
       uid: 65532
       shell: /bin/zsh
-  run-as: php
+  run-as: nonroot
 
 environment:
   PATH: /usr/sbin:/sbin:/usr/bin:/bin

@@ -12,6 +12,8 @@ contents:
     - curl
     - dropbear
     - git
+    - gitsign
+    - gitsign-credential-cache
     - glibc
     - glibc-locale-posix
     - ld-linux

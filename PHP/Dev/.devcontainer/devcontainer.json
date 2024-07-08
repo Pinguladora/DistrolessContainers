@@ -1,6 +1,6 @@
 {
-    "name": "PHP 8.2 FPM | Wolfi",
-    "image": "docker.io/library/php:8.2-fpm-dev-amd64",
+    "name": "PHP 8.3.8 FPM | Wolfi",
+    "image": "docker.io/library/php-fpm:8.3.8:dev-amd64",
 	// Set to root, so composer and other system libraries can be used by the IDE
 	"remoteUser": "root",
     "containerUser": "php"

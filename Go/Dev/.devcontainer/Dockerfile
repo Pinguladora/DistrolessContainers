@@ -1,9 +1,9 @@
-FROM docker.io/library/php-fpm:8.3.8:dev-amd64 as final
+FROM docker.io/library/go:1.22-dev-amd64 as final
 
 # Even though not recommended (due to SBOM among other apko features), you could further extend any dev image as follows
 USER root
-RUN composer require psr/log
+RUN apk add trivy
 
-USER php
+USER root
 
-ENTRYPOINT [ "/bin/php" ]
+ENTRYPOINT [ "/usr/bin/go" ]
