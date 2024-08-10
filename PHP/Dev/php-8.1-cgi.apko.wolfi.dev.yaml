@@ -66,6 +66,7 @@ contents:
     - zsh
 
 entrypoint:
+  type: service-bundle
   services:
     php: /bin/php
 

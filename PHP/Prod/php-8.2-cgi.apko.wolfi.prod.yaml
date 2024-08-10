@@ -53,6 +53,7 @@ contents:
     - zlib
 
 entrypoint:
+  type: service-bundle
   services:
     php: /bin/php
 
