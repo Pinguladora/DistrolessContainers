@@ -54,14 +54,14 @@ contents:
     - nss-hesiod
     - pkgconf
     - posix-cc-wrappers
-    - py3.10-flit-core
-    # - py3.10-pip
-    # - py3.10-pip-base
-    - py3.10-setuptools
-    - python-3.10
-    - python-3.10-base
-    - python-3.10-base-dev
-    - python-3.10-dev
+    - py3.12-flit-core
+    # - py3.12-pip
+    # - py3.12-pip-base
+    - py3.12-setuptools
+    - python-3.12
+    - python-3.12-base
+    - python-3.12-base-dev
+    - python-3.12-dev
     - readline
     - ruff
     - sqlite-libs
@@ -73,10 +73,9 @@ contents:
     - zsh
 
 entrypoint:
+  type: service-bundle
   services:
     python: /usr/bin/python
-
-work-dir: /app
 
 accounts:
   groups:
@@ -89,7 +88,8 @@ accounts:
   run-as: nonroot
 
 environment:
-  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 
 archs:
   - x86_64

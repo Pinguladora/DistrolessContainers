@@ -21,8 +21,8 @@ contents:
     - mpdecimal
     - ncurses
     - ncurses-terminfo-base
-    - python-3.11
-    - python-3.11-base
+    - python-3.12
+    - python-3.12-base
     - readline
     - sqlite-libs
     - wolfi-baselayout
@@ -44,7 +44,8 @@ accounts:
   run-as: nonroot
 
 environment:
-  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 
 archs:
   - x86_64
