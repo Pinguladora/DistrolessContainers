@@ -10,11 +10,8 @@ contents:
     - build-base
     - busybox
     - ca-certificates-bundle
-    - dropbear
     - gcc
     - git
-    - gitsign
-    - gitsign-credential-cache
     - glibc
     - glibc-dev
     - glibc-locale-posix
@@ -55,10 +52,8 @@ contents:
     - openssh-client
     - pkgconf
     - posix-cc-wrappers
-    - wget
     - wolfi-baselayout
     - zlib
-    - zsh
 
 entrypoint:
   type: service-bundle

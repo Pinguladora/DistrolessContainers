@@ -1,5 +1,5 @@
 {
-    "name": "Go 1.22 | Wolfi",
+    "name": "Go 1.22.6 | Wolfi",
     "image": "docker.io/library/go:1.22-dev-amd64",
 	"remoteUser": "root",
     "containerUser": "nonroot"
