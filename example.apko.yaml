@@ -1,10 +1,15 @@
+# this is just a BASIC example of the possibilites of apko
 contents:
+  # this is just a template example, please DO NOT mix Wolfi and Alpine packages 
   keyring:
     - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
     # - https://packages.cgr.dev/os/chainguard-enterprise.rsa.pub
+    # - https://packages.cgr.dev/os/chainguard-os.rsa.pub
+    - https://packages.cgr.dev/extras/chainguard-extras.rsa.pub
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/edge/main
     # - https://packages.cgr.dev/os
+    - https://packages.cgr.dev/extras
   packages:
     - alpine-baselayout
     - nginx
@@ -15,6 +20,9 @@ entrypoint:
   type: service-bundle
   services:
     nginx: /usr/sbin/nginx -c /etc/nginx/nginx.conf -g "daemon off;"
+
+# optional
+cmd: --help
 
 stop-signal: SIGQUIT
 
@@ -32,7 +40,8 @@ accounts:
 
 # optional environment configuration
 environment:
-  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 
 # optional path mutations
 paths:
@@ -56,7 +65,8 @@ annotations:
   foo: bar
   bar: baz
 
-# Even though not recommended you can override OS release details
+# even though not recommended you can override OS release details
+# most likely DEPRECATED
 os-release:
   id: alpine
   version-id: '3.24.0'
