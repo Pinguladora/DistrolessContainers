@@ -89,6 +89,7 @@ accounts:
 
 environment:
   PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 
 archs:
   - x86_64
