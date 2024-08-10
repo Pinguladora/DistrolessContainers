@@ -1,0 +1,68 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - apk-tools
+    - busybox
+    - ca-certificates-bundle
+    - dotnet-8
+    - dotnet-8-runtime
+    - dropbear
+    - git
+    - gitsign
+    - gitsign-credential-cache
+    - glibc
+    - glibc-locale-posix
+    - icu
+    - icu-data-full
+    - icu-libs
+    - ld-linux
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libcrypt1
+    - libcrypto3
+    - libcurl-openssl4
+    - libexpat1
+    - libgcc
+    - libidn2
+    - libnghttp2-14
+    - libpcre2-8-0
+    - libpsl
+    - libssl3
+    - libstdc++
+    - libunistring
+    - libxcrypt
+    - lttng-ust
+    - ncurses
+    - ncurses-terminfo-base
+    - wget
+    - wolfi-baselayout
+    - zlib
+    - zsh
+
+entrypoint:
+  type: service-bundle
+  services:
+    dotnet: /usr/bin/dotnet
+
+cmd: --help
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64

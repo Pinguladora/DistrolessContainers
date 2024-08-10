@@ -1,0 +1,49 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - aspnet-8-runtime
+    - aspnet-8-targeting-pack
+    - busybox
+    - ca-certificates-bundle
+    - dotnet-8
+    - dotnet-8-runtime
+    - dotnet-8-sdk
+    - dotnet-8-targeting-pack
+    - glibc
+    - glibc-locale-posix
+    - icu
+    - icu-data-full
+    - icu-libs
+    - ld-linux
+    - libcrypt1
+    - libcrypto3
+    - libgcc
+    - libssl3
+    - libstdc++
+    - libxcrypt
+    - lttng-ust
+    - wolfi-baselayout
+    - zlib
+
+cmd: /bin/sh -l
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64

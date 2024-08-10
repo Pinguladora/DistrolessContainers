@@ -1,0 +1,6 @@
+{
+    "name": ".NET SDK 8.0.7 | Wolfi",
+    "image": "docker.io/library/dotnet-sdk:8.0.7-dev-amd64",
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}
