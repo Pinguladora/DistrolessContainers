@@ -1,0 +1,61 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - busybox
+    - c-ares
+    - ca-certificates-bundle
+    - dumb-init
+    - glibc
+    - glibc-locale-posix
+    - icu-data-full
+    - icu-libs
+    - ld-linux
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libbrotlienc1
+    - libcrypt1
+    - libcrypto3
+    - libev
+    - libgcc
+    - libnghttp2-14
+    - libssl3
+    - libstdc++
+    - libuv
+    - libxcrypt
+    - nghttp2
+    - nodejs-22
+    # - npm
+    - wolfi-baselayout
+    - zlib
+
+entrypoint:
+  type: service-bundle
+  services:
+    node: /usr/bin/node
+
+cmd: --help
+
+work-dir: /app
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  NODE_PORT: 3000
+  NPM_CONFIG_UPDATE_NOTIFIER: false
+  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64

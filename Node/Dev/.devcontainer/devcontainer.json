@@ -1,0 +1,6 @@
+{
+    "name": "Rust 22.6.0| Wolfi",
+    "image": "docker.io/library/node:22.6.0-dev-amd64",
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}

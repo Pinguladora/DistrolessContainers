@@ -1,0 +1,108 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - apk-tools
+    - binutils
+    - build-base
+    - busybox
+    - c-ares
+    - ca-certificates-bundle
+    - dropbear
+    - dumb-init
+    - gcc
+    - gdbm
+    - git
+    - gitsign
+    - gitsign-credential-cache
+    - glibc
+    - glibc-dev
+    - glibc-locale-posix
+    - gmp
+    - icu-data-full
+    - icu-libs
+    - isl
+    - ld-linux
+    - libatomic
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libbrotlienc1
+    - libbz2-1
+    - libcrypt1
+    - libcrypto3
+    - libcurl-openssl4
+    - libev
+    - libexpat1
+    - libffi
+    - libgcc
+    - libgo
+    - libgomp
+    - libidn2
+    - libnghttp2-14
+    - libpcre2-8-0
+    - libpsl
+    - libquadmath
+    - libssl3
+    - libstdc++
+    - libstdc++-dev
+    - libunistring
+    - libuv
+    - libxcrypt
+    - libxcrypt-dev
+    - libzstd1
+    - linux-headers
+    - make
+    - mpc
+    - mpdecimal
+    - mpfr
+    - ncurses
+    - ncurses-terminfo-base
+    - nghttp2
+    - nodejs-22
+    - npm
+    - nss-db
+    - nss-hesiod
+    - pkgconf
+    - pnpm
+    - posix-cc-wrappers
+    - py3-pip-wheel
+    - py3-setuptools-wheel
+    - python-3.11
+    - python-3.11-base
+    - readline
+    - sqlite-libs
+    - wget
+    - wolfi-baselayout
+    - zlib
+    - zsh
+
+entrypoint:
+  type: service-bundle
+  services:
+    node: /usr/bin/node
+
+cmd: --help
+
+work-dir: /app
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  NODE_PORT: 3000
+  NPM_CONFIG_UPDATE_NOTIFIER: false
+  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64
