@@ -1,0 +1,73 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - alsa-lib
+    - busybox
+    - ca-certificates
+    - ca-certificates-bundle
+    - fontconfig-config
+    - freetype
+    - giflib
+    - glibc
+    - glibc-locale-en
+    - glibc-locale-posix
+    - java-cacerts
+    - java-common
+    - ld-linux
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libbz2-1
+    - libcrypt1
+    - libcrypto3
+    - libexpat1
+    - libffi
+    - libfontconfig1
+    - libgcc
+    - libjpeg-turbo
+    - libpng
+    - libstdc++
+    - libtasn1
+    - libx11
+    - libxau
+    - libxcb
+    - libxcrypt
+    - libxdmcp
+    - libxext
+    - libxi
+    - libxrender
+    - libxtst
+    - openjdk-21
+    - openjdk-21-default-jdk
+    - openjdk-21-default-jvm
+    - openjdk-21-jre
+    - openjdk-21-jre-base
+    - p11-kit
+    - p11-kit-trust
+    - ttf-dejavu
+    - wolfi-baselayout
+    - zlib
+
+work-dir: /home/build
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  JAVA_HOME: /usr/lib/jvm/default-jvm
+  LANG: en_US.UTF-8
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64

@@ -1,0 +1,7 @@
+{
+    "name": "Java (Opensdk) 21.0.4 | Wolfi",
+    "image": "docker.io/library/java:21.0.4-dev-amd64",
+	// Set to root, so composer and other system libraries can be used by the IDE
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}
