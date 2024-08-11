@@ -1,0 +1,92 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - apk-tools
+    - binutils
+    - build-base
+    - busybox
+    - ca-certificates-bundle
+    - dropbear
+    - gcc
+    - git
+    - gitsign
+    - gitsign-credential-cache
+    - glibc
+    - glibc-dev
+    - glibc-locale-posix
+    - gmp
+    - isl
+    - ld-linux
+    - libatomic
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libcrypt1
+    - libcrypto3
+    - libcurl-openssl4
+    - libexpat1
+    - libffi
+    - libgcc
+    - libgo
+    - libgomp
+    - libidn2
+    - libLLVM-18
+    - libnghttp2-14
+    - libpcre2-8-0
+    - libpsl
+    - libquadmath
+    - libssl3
+    - libstdc++
+    - libstdc++-dev
+    - libunistring
+    - libxcrypt
+    - libxcrypt-dev
+    - libxml2
+    - libzstd1
+    - linux-headers
+    - llvm-18
+    - make
+    - mpc
+    - mpfr
+    - ncurses
+    - ncurses-terminfo-base
+    - nss-db
+    - nss-hesiod
+    - pkgconf
+    - posix-cc-wrappers
+    - rust-1.80
+    - rustup
+    - wget
+    - wolfi-baselayout
+    - xz
+    - zlib
+    - zsh
+
+entrypoint:
+  type: service-bundle
+  services:
+    rust: /usr/bin/rustc
+
+cmd: --help
+
+work-dir: /work
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64

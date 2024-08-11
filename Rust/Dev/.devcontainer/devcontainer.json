@@ -1,0 +1,6 @@
+{
+    "name": "Rust 1.80.1| Wolfi",
+    "image": "docker.io/library/rust:1.80.1-dev-amd64",
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}
