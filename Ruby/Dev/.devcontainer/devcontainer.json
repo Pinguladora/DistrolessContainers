@@ -1,0 +1,7 @@
+{
+    "name": "Ruby 3.3.4 | Wolfi",
+    "image": "docker.io/library/ruby:3.3.4-dev-amd64",
+	// Set to root, so apk and other system libraries can be used by the IDE
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}

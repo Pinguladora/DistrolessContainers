@@ -1,0 +1,47 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - ca-certificates-bundle
+    - glibc
+    - glibc-locale-posix
+    - ld-linux
+    - libcrypt1
+    - libcrypto3
+    - libffi
+    - libgcc
+    - libssl3
+    - libxcrypt
+    - ruby-3.3
+    - wolfi-baselayout
+    - yaml
+    - zlib
+
+entrypoint:
+  type: service-bundle
+  services:
+    ruby: /usr/bin/ruby
+
+cmd: --version
+
+work-dir: /work
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64
