@@ -1,0 +1,6 @@
+{
+    "name": "Zig 0.13.0 | Wolfi",
+    "image": "docker.io/library/zig:0.13.0-dev-amd64",
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}

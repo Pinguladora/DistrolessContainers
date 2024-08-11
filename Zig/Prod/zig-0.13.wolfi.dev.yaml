@@ -1,0 +1,49 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - busybox
+    - ca-certificates-bundle
+    - glibc
+    - glibc-locale-posix
+    - ld-linux
+    - libclang-cpp-18
+    - libcrypt1
+    - libffi
+    - libgcc
+    - libLLVM-18
+    - libstdc++
+    - libxcrypt
+    - libxml2
+    - llvm-18
+    - wolfi-baselayout
+    - xz
+    - zig
+    - zlib
+
+entrypoint:
+  type: service-bundle
+  services:
+    zig: /usr/bin/zig
+
+cmd: help
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64
