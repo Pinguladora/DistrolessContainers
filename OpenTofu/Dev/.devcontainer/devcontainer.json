@@ -1,0 +1,6 @@
+{
+    "name": "OpenTofu 1.8.1 (Plus Terragrunt) | Wolfi",
+    "image": "docker.io/library/opentofu:latest-amd64",
+	"remoteUser": "root",
+    "containerUser": "nonroot"
+}

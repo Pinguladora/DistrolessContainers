@@ -1,0 +1,67 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - apk-tools
+    - busybox
+    - ca-certificates-bundle
+    - dropbear
+    - git
+    - gitsign
+    - gitsign-credential-cache
+    - glibc
+    - glibc-locale-posix
+    - keyutils-libs
+    - krb5-conf
+    - krb5-libs
+    - ld-linux
+    - libbrotlicommon1
+    - libbrotlidec1
+    - libcom_err
+    - libcrypt1
+    - libcrypto3
+    - libcurl-openssl4
+    - libexpat1
+    - libidn2
+    - libnghttp2-14
+    - libpcre2-8-0
+    - libpsl
+    - libssl3
+    - libunistring
+    - libverto
+    - libxcrypt
+    - ncurses
+    - ncurses-terminfo-base
+    - opentofu
+    - terragrunt
+    - wget
+    - wolfi-baselayout
+    - zlib
+    - zsh
+
+entrypoint:
+  type: service-bundle
+  services:
+    opentofu: /usr/bin/tofu
+
+cmd: --help
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64
