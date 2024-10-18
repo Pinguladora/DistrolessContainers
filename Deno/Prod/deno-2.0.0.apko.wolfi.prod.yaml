@@ -1,0 +1,40 @@
+contents:
+  keyring:
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+  repositories:
+    - https://packages.wolfi.dev/os
+  packages:
+    - ca-certificates-bundle
+    - deno
+    - glibc
+    - glibc-locale-posix
+    - ld-linux
+    - libgcc
+    - wolfi-baselayout
+
+entrypoint:
+  type: service-bundle
+  services:
+    deno: /usr/bin/deno
+
+cmd: --help
+
+work-dir: /app
+
+accounts:
+  groups:
+    - groupname: nonroot
+      gid: 65532
+  users:
+    - username: nonroot
+      uid: 65532
+      shell: /bin/zsh
+  run-as: nonroot
+
+environment:
+  PATH: /usr/sbin:/sbin:/usr/bin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+
+archs:
+  - x86_64
+  - aarch64
